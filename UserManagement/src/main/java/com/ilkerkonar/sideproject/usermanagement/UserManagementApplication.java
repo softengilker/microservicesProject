@@ -24,6 +24,6 @@ public class UserManagementApplication implements CommandLineRunner {
 
 		System.out.println( "Starting data code" );
 
-		userRepository.save( new User( "ilker", "konar" ) );
+		// userRepository.save( new User( "ilker", "konar" ) );
 	}
 }
