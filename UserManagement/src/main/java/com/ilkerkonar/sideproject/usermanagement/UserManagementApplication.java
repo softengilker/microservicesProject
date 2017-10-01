@@ -7,7 +7,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.ilkerkonar.sideproject.usermanagement.data.UserRepository;
-import com.ilkerkonar.sideproject.usermanagement.model.User;
 
 @SpringBootApplication
 public class UserManagementApplication implements CommandLineRunner {
@@ -24,6 +23,7 @@ public class UserManagementApplication implements CommandLineRunner {
 
 		System.out.println( "Starting data code" );
 
-		// userRepository.save( new User( "ilker", "konar" ) );
+		// userRepository.save( new User( "ozge", "konar" ) );
+		// userRepository.save( new User( "nehir ilge", "konar" ) );
 	}
 }
