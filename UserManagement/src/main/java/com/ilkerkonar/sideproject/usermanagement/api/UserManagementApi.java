@@ -14,6 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ilkerkonar.sideproject.usermanagement.data.UserRepository;
 import com.ilkerkonar.sideproject.usermanagement.model.User;
 
+/**
+ * API Main Class including the Restful Api Method implementations.
+ * 
+ * @author ilker konar
+ * @version 1.0
+ * @since Dec 30, 2017
+ *
+ */
 @RestController
 public class UserManagementApi implements IUserManagementApi {
 
