@@ -1,11 +1,11 @@
 
 package com.ilkerkonar.sideproject.usermanagement.api;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,9 +41,15 @@ public class UserManagementApi implements IUserManagementApi {
 
 		} else {
 
-			returnValue = new ArrayList< User >();
+			returnValue = userRepository.findAll();
 		}
 
 		return returnValue;
+	}
+
+	@Override
+	@RequestMapping( method = RequestMethod.POST, value = "/userSave" )
+	public void saveUser( @RequestBody final List< User > userList ) {
+		userList.forEach( a -> userRepository.save( a ) );
 	}
 }

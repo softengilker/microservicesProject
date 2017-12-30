@@ -8,11 +8,15 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class User {
 
 	@Id
-	private String	id;
+	private String id;
 
-	private String	firstName;
+	private String firstName;
 
-	private String	lastName;
+	private String lastName;
+
+	public User() {
+
+	}
 
 	public User( final String firstName, final String lastName ) {
 		this.firstName = firstName;
@@ -41,5 +45,10 @@ public class User {
 
 	public void setLastName( final String lastName ) {
 		this.lastName = lastName;
+	}
+
+	@Override
+	public String toString() {
+		return "[User, id : " + getId() + ", name : " + getFirstName() + ", lastName : " + getLastName() + "]";
 	}
 }
