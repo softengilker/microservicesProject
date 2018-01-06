@@ -4,6 +4,12 @@ plugins {
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'jacoco'
+
+jacoco {
+    toolVersion = "0.7.1.201405082137"
+    reportsDir = file("$buildDir/customJacocoReportDir")
+}
 
 repositories {
     mavenCentral()
@@ -17,6 +23,8 @@ configurations.all {
 	exclude module: 'jul-to-slf4j'
 	exclude module: 'commons-logging'
 }
+
+
 
 dependencies {
 

@@ -12,6 +12,14 @@ import org.springframework.stereotype.Component;
 import com.ilkerkonar.sideproject.usermanagement.api.IUserManagementApi;
 import com.ilkerkonar.sideproject.usermanagement.model.User;
 
+/**
+ * Includes logging aspect methods of the API restful methods. 
+ *
+ * @author ilker konar
+ * @version 1.0
+ * @since Dec 30, 2017
+ *
+ */
 @Aspect
 @Component
 public class LoggingAspectOfUserManagementApi {

@@ -25,8 +25,12 @@ import com.ilkerkonar.sideproject.usermanagement.model.User;
 @RestController
 public class UserManagementApi implements IUserManagementApi {
 
+	private final UserRepository userRepository;
+
 	@Autowired
-	private UserRepository userRepository;
+	public UserManagementApi( final UserRepository userRepository ) {
+		this.userRepository = userRepository;
+	}
 
 	@RequestMapping( method = RequestMethod.GET, value = "/user" )
 	@Override
@@ -60,4 +64,5 @@ public class UserManagementApi implements IUserManagementApi {
 	public void saveUser( @RequestBody final List< User > userList ) {
 		userList.forEach( a -> userRepository.save( a ) );
 	}
+
 }
