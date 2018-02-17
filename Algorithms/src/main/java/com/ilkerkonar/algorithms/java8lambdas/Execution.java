@@ -4,6 +4,7 @@
 
 package com.ilkerkonar.algorithms.java8lambdas;
 
+import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -50,14 +51,34 @@ public class Execution {
 		System.out.println( personList.stream().collect( Collectors.averagingInt( p -> p.getAge() ) ).toString() );
 
 		System.out.println( "Convert person list to person map with person name key:" );
-		final Map< String, Person > personMapByName = personList.stream().collect( Collectors.toMap( Person::getName, p -> p ) );
+		final Map< String, Person > personMapByName = personList.stream()
+			.collect( Collectors.toMap( Person::getName, p -> p ) );
 		personMapByName.forEach( ( a, b ) -> System.out.println( a + " : " + b ) );
 
 		System.out.print( "Joining the person names:" );
-		System.out.println( personList.stream().map( a -> a.getName() ).collect( Collectors.joining( " " ) ) );
+		System.out.println( personList.stream().map( Person::getName ).collect( Collectors.joining( " " ) ) );
 
 		System.out.print( "Male person count:" );
-		System.out.println( personList.stream().filter( a -> a.getGender() == Gender.MALE ).collect( Collectors.counting() ).toString() );
+		System.out.println( personList.stream().filter( a -> a.getGender() == Gender.MALE )
+			.collect( Collectors.counting() ).toString() );
+
+		System.out.println( "Person age statistics:" );
+		final IntSummaryStatistics ageStatistics = personList.stream()
+			.collect( Collectors.summarizingInt( Person::getAge ) );
+		System.out
+			.println( "Average : " + ageStatistics.getAverage() + ", Count : " + ageStatistics.getCount() + ", Max : "
+				+ ageStatistics.getMax() + ", Min : " + ageStatistics.getMin() + ", Sum : " + ageStatistics.getSum() );
+
+		System.out.println( "Convert person list to map with gender key" );
+		final Map< Gender, List< Person > > personSetByGender = personList.stream()
+			.collect( Collectors.groupingBy( Person::getGender, Collectors.toList() ) );
+		printPersonListByName( "Female list : ", personSetByGender.get( Gender.FEMALE ) );
+		printPersonListByName( "Male list : ", personSetByGender.get( Gender.MALE ) );
+	}
+
+	private void printPersonListByName( final String title, final List< Person > personList ) {
+		System.out.print(
+			title + personList.stream().map( Person::getName ).collect( Collectors.joining( ", ", "", "\n" ) ) );
 	}
 
 }
