@@ -61,8 +61,8 @@ public class UserManagementApi implements IUserManagementApi {
 
 	@Override
 	@RequestMapping( method = RequestMethod.POST, value = "/userSave" )
-	public void saveUser( @RequestBody final List< User > userList ) {
-		userList.forEach( a -> userRepository.save( a ) );
+	public List< User > saveUsers( @RequestBody final List< User > userList ) {
+		return userRepository.save( userList );
 	}
 
 }

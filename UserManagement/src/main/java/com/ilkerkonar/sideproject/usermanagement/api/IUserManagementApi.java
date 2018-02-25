@@ -36,6 +36,7 @@ public interface IUserManagementApi {
 	 * 
 	 * @param userList
 	 *           The User list to be saved into the database.
+	 * @return The saved instances list.
 	 */
-	void saveUser( final List< User > userList );
+	List< User > saveUsers( final List< User > userList );
 }

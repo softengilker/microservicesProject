@@ -13,7 +13,7 @@ import com.ilkerkonar.sideproject.usermanagement.api.IUserManagementApi;
 import com.ilkerkonar.sideproject.usermanagement.model.User;
 
 /**
- * Includes logging aspect methods of the API restful methods. 
+ * Includes logging aspect methods of the API restful methods.
  *
  * @author ilker konar
  * @version 1.0
@@ -36,7 +36,7 @@ public class LoggingAspectOfUserManagementApi {
 	}
 
 	@SuppressWarnings( "unchecked" )
-	@AfterReturning( pointcut = "execution(* com.ilkerkonar.sideproject.usermanagement.api.IUserManagementApi.saveUser(..))", returning = "result" )
+	@AfterReturning( pointcut = "execution(* com.ilkerkonar.sideproject.usermanagement.api.IUserManagementApi.saveUsers(..))", returning = "result" )
 	public void logAfterSaveUserReturning( final JoinPoint joinPoint, final Object result ) {
 
 		LOGGER.info( "Invoking 'saveUser' restful method. The parameter list: {}",
